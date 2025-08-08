@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <th>Key</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key, val in widget.value.items %}
+        <tr>
+            <td><input type="text" name="{{ widget.name }}_keys[]" value="{{ key }}"></td>
+            <td><input type="text" size="80" name="{{ widget.name }}_values[]" value="{{ val }}"></td>
+        </tr>
+    {% endfor %}
+
+    <!-- Adding extra empty line to allow users to add additional dict to the list. -->
+    <tr>
+        <td><input type="text" name="{{ widget.name }}_keys[]"></td>
+        <td><input type="text" size="80" name="{{ widget.name }}_values[]"></td>
+    </tr>
+    </tbody>
+</table>

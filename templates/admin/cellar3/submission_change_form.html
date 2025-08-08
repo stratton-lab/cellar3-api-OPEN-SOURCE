@@ -1,0 +1,36 @@
+{% extends "admin/change_form.html" %}
+
+{% block content %}
+    {% if adminform.form.instance.status == 'accepted' %}
+        <div class="model-links">
+            <a target="_blank"
+               href="https://PROD_SERVER_URL/submit-rds-file/{{ original.id }}">
+                Click here to access RDS file Upload Portal</a></li>
+
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+
+    {{ block.super }} <!-- Default Save and Delete buttons -->
+
+    {% if adminform.form.instance.status == 'received' %}
+        <div style="font-size: 14px; font-weight: 800;">Your Decision</div>
+        <div class="submit-row">
+            <a href="{% url 'admin:accept' object_id=original.id %}" class="closelink" style="background: #4caf50;">
+                Accept Submission
+            </a>
+            <a href="{% url 'admin:reject' object_id=original.id %}" class="deletelink" style="margin-left: 10px;">
+                Reject Submission
+            </a>
+        </div>
+    {% endif %}
+    <div style="color: #cd4741; margin-top: 40px;"><b>!!! DANGER ZONE !!! Can not be undone.</b></div>
+    <div class="submit-row">
+        <a href="{% url 'admin:delete_files' object_id=original.id %}" class="closelink" style="background: #cd4741;">
+            Delete RDS and H5AD files.
+        </a>
+    </div>
+{% endblock %}

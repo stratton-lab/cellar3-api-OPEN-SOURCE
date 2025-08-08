@@ -1,0 +1,38 @@
+{% load custom_filters %}
+<table>
+    <thead>
+    <tr>
+        <!-- Column names are predetermined. They are declared for the widget, and should correspond to the keys of the main
+         dictionary stored in the cell for this db field.-->
+        {% for field in widget.fields %}
+            <th>{{ field }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    <!-- For each dict stored in the list... -->
+    {% for row in widget.value %}
+        <tr>
+            {% for field in widget.fields %}
+                <td>
+                    <input
+                            type="text"
+                            name="{{ widget.name }}_{{ field }}"
+                            value="{{ row|get_item:field }}">
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+
+    <!-- Empty row for new data -->
+    <tr>
+        {% for field in widget.fields %}
+            <td>
+                <input
+                        type="text"
+                        name="{{ widget.name }}_{{ field }}">
+            </td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>

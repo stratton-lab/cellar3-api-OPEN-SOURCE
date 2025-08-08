@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .email-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .email-body {
+            padding: 20px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .email-body h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .email-body p {
+            margin-bottom: 15px;
+        }
+
+        .email-footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+            background-color: #f4f4f4;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <!-- Email Header -->
+    <div class="email-header">
+        Conversion Successful!
+    </div>
+
+    <!-- Email Body -->
+    <div class="email-body">
+        <h1>Submitted RDS file has been converted to h5ad format and imported into DEV.</h1>
+        <p>Submission: <b>{{ submission_id }}</b></p>
+        <p>Dataset: <b>{{ dataset_id }}</b> - {{ dataset_name }}</p>
+        <a href="{{ link_to_dataset }}" class="button">Access Dataset on DEV website</a>
+        <p>
+            <a href="{{ link_to_prod_dataset }}">Link to future PROD URL</a>
+        </p>
+
+    </div>
+
+    <!-- Email Footer -->
+    <div class="email-footer">
+        <p>SingloCell. Understanding Biology One Single Cell at a Time.</p>
+    </div>
+</div>
+
+</body>
+</html>

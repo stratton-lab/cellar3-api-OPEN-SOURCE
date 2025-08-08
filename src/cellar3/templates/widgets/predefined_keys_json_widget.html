@@ -1,0 +1,22 @@
+{% load custom_filters %}
+<table>
+    <thead>
+    <tr>
+        <th>Key</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key in widget.predefined_keys %}
+        <tr>
+            <td>{{ key }}</td>
+            <td><input
+                    type="text"
+                    size="80"
+                    name="{{ widget.name }}_{{ key }}"
+                    value="{{ widget.value|get_item:key }}">
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

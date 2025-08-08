@@ -1,0 +1,16 @@
+{% extends "admin/change_form.html" %}
+{% block content %}
+    {% if original and original.id %}
+        <div class="model-links">
+            <ul>
+                <li><a target="_blank"
+                       href="https://DEV_SERVER_URL/singlocell/display?dataset={{ original.id }}">
+                    Access Dataset on DEV</a></li>
+                <li><a target="_blank"
+                       href="https://PROD_SERVER_URL/display?dataset={{ original.id }}">
+                    Access Dataset on PROD</a></li>
+            </ul>
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}
